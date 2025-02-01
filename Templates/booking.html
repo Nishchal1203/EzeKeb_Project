@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>EzeKeb-Booking</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="booking.html">
+    <link rel="stylesheet" href="{% static 'bookingstyle.css' %}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#">EzeKeb Mobility</a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <br><br><br>
+
+    <!-- Main content area for the form -->
+    <main>
+      <section class="form-section">
+        <h2 style="text-align: center;">Book Your Ride</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <div class="form-group">
+            <input type="hidden" name="access_key" value="d654687d-50b5-4798-9ddc-101a6b418c05">
+            <label for="starting-location">Starting Location</label>
+            <select id="starting-location" name="starting-location" required>
+              <option value="">-Select-</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Khatu Shyam">Khatu Shyam</option>
+              <option value="Ajmer">Ajmer</option>
+              <option value="Salasar">Salasar</option>
+              <option value="Jaipur_Junction">Jaipur Junction</option>
+              <option value="Jaipur_darshan">Jaipur Darshan</option>
+              <option value="Dausa">Dausa</option>
+              <option value="Behroad">Behroad</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <select id="destination" name="destination" required>
+              <option value="">-Select-</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Khatu Shyam">Khatu Shyam</option>
+              <option value="Ajmer">Ajmer</option>
+              <option value="Salasar">Salasar</option>
+              <option value="Jaipur_Junction">Jaipur Junction</option>
+              <option value="Jaipur_darshan">Jaipur Darshan</option>
+              <option value="Dausa">Dausa</option>
+              <option value="Behroad">Behroad</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pickup-date">Date of Pickup</label>
+            <input type="date" id="pickup-date" name="pickup-date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="pickup-time">Time of Pickup</label>
+            <input type="time" id="pickup-time" name="pickup-time" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone-no">Contact No.</label>
+            <input type="number" id="phone-no" name="phone-no" required />
+          </div>
+
+          <div class="form-group">
+            <label for="num-travelers">Number of Travelers</label>
+            <select id="num-travelers" name="num-travelers" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="6+">6+</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Any special requests or instructions..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Submit</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="section__container footer__bar">
+        <h4>EzeKeb</h4>
+        <p style="color: black;">Copyright © 2024 EzeKeb Mobility. All rights reserved.</p>
+        <ul class="footer__socials">
+          <li>
+            <a alt="instagram" href="https://www.instagram.com/ezekeb_mobility?igsh=b3NrNzd6a2czbmd0" target="_blank" ><i class="ri-instagram-fill"></i></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      document.querySelector("form").addEventListener("submit", function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get form values
+        const startingLocation = document.getElementById("starting-location").value;
+        const destination = document.getElementById("destination").value;
+        const phoneNo = document.getElementById("phone-no").value;
+
+        // Validation
+        let isValid = true;
+        let errorMessage = "";
+
+        // Check if starting and ending destinations are the same
+        if (startingLocation === destination) {
+          isValid = false;
+          errorMessage = "Starting location and destination cannot be the same.";
+        }
+
+        // Check if contact number is exactly 10 digits
+        if (phoneNo.length !== 10 || isNaN(phoneNo)) {
+          isValid = false;
+          errorMessage = "Contact number must be exactly 10 digits.";
+        }
+
+        // Display validation result
+        if (isValid) {
+          alert("Form accepted!");
+          // Submit the form (optional, depends on your requirements)
+          this.submit();
+        } else {
+          alert("Form not accepted: " + errorMessage);
+        }
+      });
+    </script>
+  </body>
+</html>
