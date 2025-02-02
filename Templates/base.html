@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}EzeKeb Mobility{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav__header">
+                <div class="nav__logo">
+                    <a href="{% url 'index' %}">EzeKeb Mobility</a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Services</a></li>
+                <li><a href="#ride">Ride</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="section__container footer__container">
+            <!-- Your footer content -->
+        </div>
+        <div class="section__container footer__bar">
+            <h4>EzeKeb</h4>
+            <p>Copyright © 2024 EzeKeb Mobility. All rights reserved.</p>
+            <ul class="footer__socials">
+                <li>
+                    <a href="https://www.instagram.com/ezekeb_mobility" target="_blank">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

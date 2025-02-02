@@ -24,12 +24,11 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#service">Services</a></li>
-          <li><a href="#ride">Ride</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#service">Services</a></li>
+            <li><a href="#ride">Ride</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
        
       </nav>
@@ -45,18 +44,18 @@
           <h1>Looking to save more on your Cab Services?</h1>
           <br>
           <p>
-            Discover EzeKeb Mobility Cab Services/rental aoptions in Rajasthan, India with Rent a Car Select
+            Discover EzeKeb Mobility Cab Services/rental options in Rajasthan, India with Rent a Car Select
             from a range of car options and local specials.
           </p>
           <div class="header__links">
             <button class="btn">
 
-              <a href="booking.html" class="button">
+              <a href="{% url 'book_ride' %}" class="button">
                 <h3>Book Now</h3>
               </a>
             </button>
             <button class="btn">
-              <a href="contact.html" class="button">
+              <a href="{% url 'contact' %}" class="button">
                 <h3>Contact Us</h3>
               </a>
             </button>
@@ -267,4 +266,4 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="{% static 'main.js' %}"></script>
   </body>
-</html>
+</html> 
